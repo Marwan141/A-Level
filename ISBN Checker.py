@@ -18,6 +18,9 @@ if len(str(code)) == 13:
 checker = (newNum % 10) - 10
 
 
-if checker or -checker  == checkNum:
-    print("The ISBN number is valid. ")
-    
+if int(checkNum) == checker:
+    print("The ISBN you have inputted is valid.")
+elif int(checkNum) == -checker:
+    print("The ISBN you have inputted is valid.")
+else:
+    print("This ISBN is not valid.")
