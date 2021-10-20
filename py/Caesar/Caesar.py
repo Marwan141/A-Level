@@ -1,6 +1,8 @@
 choice = input("Choose E for Encryption or D for Decryption: ")
 message = input("Enter your message: ")
 shift = int(input("Enter the shift: "))
+
+
 encryptedmsg = ""
 decryptedmsg = ""
 
@@ -9,7 +11,10 @@ def encrypt():
     newmessage = ""
     for i in message:
         newletter = ord(i) + shift
-        if i.isupper():
+        if i == "," or i == "." or i == ":" or i == ";" or i == "[" or i == "]" or i == " " or i.isnumeric():
+            newletter = ord(i)
+            newmessage = newmessage + chr(newletter)
+        elif i.isupper():
             if newletter >= 65 and newletter <= 90:
                 newmessage = newmessage + chr(newletter)
             elif newletter > 90:
@@ -28,7 +33,12 @@ def encrypt():
 def decrypt():
     newmessage = ""
     for i in message:
-        if i.isupper():
+        newletter = ord(i) - shift
+        print(newletter)
+        if i == "," or i == "." or i == ":" or i == ";" or i == "[" or i == "]" or i == " " or i.isnumeric():
+            newletter = ord(i)
+            newmessage = newmessage + chr(newletter)
+        elif i.isupper():
             if newletter >= 65 and newletter <= 90:
                 newmessage = newmessage + chr(newletter)
             elif newletter < 65:
@@ -45,15 +55,15 @@ def decrypt():
     return decryptedmsg
 
 if choice == "E":
-    encryptedmsg=encrypt()
+    encryptedmsg = encrypt()
     f = open("Result.txt" , "a")
-    f.write(encryptedmsg + "with shift of: " + str(shift))
+    f.write(" " + encryptedmsg + "with shift of: " + str(shift))
     f.close()
 
 elif choice == "D":
-    decryptedmsg=decrypt()
+    decryptedmsg = decrypt()
     f = open("Result.txt" , "a")
-    f.write(decryptedmsg + " with shift of: " + str(shift))
+    f.write(" " + decryptedmsg + " with shift of: " + str(shift))
     f.close()
 else:
     print("Invalid choice. ")
