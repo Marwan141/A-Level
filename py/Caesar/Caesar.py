@@ -57,7 +57,7 @@ def decrypt():
 if choice == "E":
     encryptedmsg = encrypt()
     f = open("Result.txt" , "a")
-    f.write(" " + encryptedmsg + "with shift of: " + str(shift))
+    f.write(" " + encryptedmsg + " with shift of: " + str(shift))
     f.close()
 
 elif choice == "D":
